@@ -1,0 +1,14 @@
+version: "3"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: docker-files/Dockerfile
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 80:80
+  redis:
+    image: isaackuang/redis
+    ports:
+      - 6379:6379
