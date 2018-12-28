@@ -17,13 +17,13 @@ $app->get('/hello/{name}', function (Request $request, Response $response, array
 });
 
 $app->get('/setredis', function(Request $request, Response $response, array $args) use ($container) {
-    $container['RedisPool']->redis->set("TestRedis","HelloWorld");
+    $container['RedisPool']->set("TestRedis","HelloWorld");
     $response->getBody()->write("Done");
     return $response;
 });
 
 $app->get('/getredis', function(Request $request, Response $response, array $args) use ($container) {
-    $data = $container['RedisPool']->redis->get("TestRedis");
+    $data = $container['RedisPool']->get("TestRedis");
     $response->getBody()->write($data);
     return $response;
 });
